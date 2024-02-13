@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Form</title>
+	<style>
+		form {
+			display:flex;
+			align-items: center;
+			flex-direction: column;
+			font-family: Arial, sans-serif;
+		}
+	</style>
+	<script type="text/javascript" src="popup.js" rel="script"></script>
+</head>
+<body>
+	<form>
+		<label for="firstname">First Name</label>
+		<input id="firstname" type="text" placeholder="First Name">
+		<label for="name">Name</label>
+		<input id="name" type="text" placeholder="Name">
+		<label for="age">Age</label>
+		<input id="age" type="number" placeholder="Age">
+		<label for="phone">Phone</label>
+		<input id="phone" type="tel" placeholder="tel">
+		<label for="email">Email</label>
+		<input id="email" type="email" placeholder="Email">
+		<label for="gender">Gender</label>
+		<div style="display: flex; flex-direction:row; align-items: center;">
+			<label for="gender_male">Male</label>
+			<input id="gender_male" type="checkbox" value="male">
+			<label for="gender_female">Female</label>
+			<input id="gender_female" type="checkbox" value="female">
+			<label for="gender_other">Other</label>
+			<input id="gender_other" type="checkbox" value="other">
+		</div>
+		<label for="student">Student</label>
+		<input id="student" type="checkbox" value="student"> 
+		<button onclick="displayFormContents()">Submit</button>
+	</form>
+</body>
+</html>
