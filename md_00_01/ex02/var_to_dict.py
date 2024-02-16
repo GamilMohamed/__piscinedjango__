@@ -25,8 +25,10 @@ def vartodict():
 	newdict = {}
 	for i in d:
 		newdict[i[1]] = i[0]
-	print(newdict)
-	
+
+	for key, value in newdict.items():
+		print(f"{key} : {value}")
+
 
 if __name__ == "__main__":
 	vartodict()
