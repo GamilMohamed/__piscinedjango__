@@ -17,7 +17,9 @@ def periodic_table():
 			temp["electron"] = list(val[4].split(":")[1].split(" "))
 			mendeleev[typenpos[0]] = temp
 			# print(mendeleev[typenpos[0]])
-	create_file(mendeleev)
+	for x in mendeleev:
+ 		print(mendeleev[x]["id"])
+	# create_file(mendeleev)
 
 def create_file(tab):
 	with open("periodic_table.html", "w") as file:
