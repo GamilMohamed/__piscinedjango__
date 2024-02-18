@@ -1,16 +1,3 @@
-states = {
-"Oregon" : "OR",
-"Alabama" : "AL",
-"New Jersey": "NJ",
-"Colorado" : "CO"
-}
-
-capital_cities = {
-"OR": "Salem",
-"AL": "Montgomery",
-"NJ": "Trenton",
-"CO": "Denver"
-}
 
 import sys
 
@@ -22,6 +9,19 @@ def ok(where, inside) :
 
 
 def find_state(city):
+	states = {
+	"Oregon" : "OR",
+	"Alabama" : "AL",
+	"New Jersey": "NJ",
+	"Colorado" : "CO"
+	}
+
+	capital_cities = {
+	"OR": "Salem",
+	"AL": "Montgomery",
+	"NJ": "Trenton",
+	"CO": "Denver"
+	}
 	short = ok(capital_cities, city)
 	state = ok(states, short)
 	if state == None:
