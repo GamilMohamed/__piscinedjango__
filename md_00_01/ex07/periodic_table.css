@@ -1,0 +1,52 @@
+.periodic {
+  height: 900px;
+}
+
+.periodic-row {
+  height: 10%;
+}
+
+.cell {
+  float: left;
+  position: relative;
+  width: 5.55%;
+  height: 100%;
+}
+
+.element {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 1px;
+  right: 1px;
+  text-align: center;
+  background-color: rgba(0, 128, 128, 0.6);
+}
+
+.at_num,
+.at_details {
+  position: absolute;
+  font-size: 12px;
+  opacity: 1;
+}
+
+.at_num {
+  top: 4px;
+  right: 5px;
+}
+
+.symbol {
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  right: 0px;
+  margin-top: -17px;
+  font-size: 26px;
+}
+
+.at_details {
+  color:darkred;
+  bottom: 4px;
+  left: 0px;
+  right: 0px;
+}

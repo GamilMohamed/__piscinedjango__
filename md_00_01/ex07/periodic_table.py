@@ -1,7 +1,3 @@
-from tkinter import Menu
-from turtle import position
-
-
 def periodic_table():
 	mendeleev = {}
 	with open("periodic_table.txt", "r") as file:
