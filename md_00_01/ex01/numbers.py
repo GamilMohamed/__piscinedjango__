@@ -1,5 +1,3 @@
-import sys
-
 def readfile():
 	with open("numbers.txt", 'r') as file:
 		line = file.readline().split(",")

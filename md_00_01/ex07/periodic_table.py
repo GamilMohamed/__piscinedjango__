@@ -1,4 +1,6 @@
-def periodic_table():
+#!/usr/bin/python3
+
+def mendeleev_tab():
 	mendeleev = {}
 	with open("periodic_table.txt", "r") as file:
 		elements = file.read().split("\n")
@@ -16,22 +18,78 @@ def periodic_table():
 			temp["molar"] = val[3].split(":")[1]
 			temp["electron"] = list(val[4].split(":")[1].split(" "))
 			mendeleev[typenpos[0]] = temp
-			# print(mendeleev[typenpos[0]])
-	for x in mendeleev:
- 		print(mendeleev[x]["id"])
-	# create_file(mendeleev)
+	return mendeleev
+    
 
-def create_file(tab):
-	with open("periodic_table.html", "w") as file:
-		file.write('<!DOCTYPE html>\n<html lang="en">\n<head>\n\t<meta charset="UTF-8">\n\t<meta name="viewport" content="width=device-width, initial-scale=1.0">\n\t<title>Periodic table</title>\n</head>\n<body>\n\t')
-		file.write('<table>\n')
-		for x in tab:
-			file.write(f'\t<tr>\n\t\t\t<h4>{tab[x]["name"]}</h4>\n\t\t\t<ul>\n\t\t\t\t<li>Pos:{tab[x]["pos"]}</li>\n\t\t\t\t<li>ID:{tab[x]["id"]}</li>\n\t\t\t\t<li>Small:{tab[x]["small"]}</li>\n\t\t\t\t<li>Molar:{tab[x]["molar"]}</li>\n\t\t\t\t<li>Electron:{tab[x]["electron"]}</li>\n\t\t\t</ul>\n\t\t</tr>')
-			# file.write(f'\n\t\t<tr>\n\t\t\t<h4>	{tab[x]["name"]}</h4>\n\t\t\t<ul>\n\t\t\t\t<li>{tab[x]["pos"]}</li>\n\t\t\t\t<li>{tab[x]["id"]}</li>\n\t\t\t\t<li>{tab[x]["small"]}</li>\n\t\t\t\t<li>{tab[x]["molar"]}</li>\n\t\t\t\t<li>{tab[x]["electron"]}</li>\n\t\t\t</ul>\n\t\t</tr>\n\t')
-			# file.write(f'\n\t<div style="left: {tab[x]["pos"]}; top: {tab[x]["pos"]};">\n\t\t<h1>{tab[x]["name"]}</h1>\n\t\t<p>Id: {tab[x]["id"]}</p>\n\t\t<p>Small: {tab[x]["small"]}</p>\n\t\t<p>Molar: {tab[x]["molar"]}</p>\n\t\t<p>Electron: {tab[x]["electron"]}</p>\n\t</div>')
+def writecssfile():
+    f = open("periodic_table.css", "w")
+    f.write("""      table {
+        border-collapse: collapse;
+      }
+      h4 {
+        text-align: center;
+      }
+      ul {
+        list-style: none;
+        padding-left: 0px;
+      }
+      td {
+        border: 1px solid black;
+        padding: 10px;
+        width: 100px;
+      }
+      .none {
+        border: none;
+      }
+""")
+    f.close()
 
-		file.write('</table>\n')
-		file.write('\n</body>\n</html>\n\n')
+def print_bloc(element):
+    str = """      <td>
+       <h4>{}</h4>
+        <ul>
+          <li>No: {}</li>
+          <li>Symbol: {}</li>
+          <li>molar: {}</li>  
+          <li>{} electron</li>  
+        </ul>
+      </td>\n"""
+    return str.format(element["name"], element["id"], element["small"], element["molar"], element["electron"])
 
-if __name__ == "__main__":
-	periodic_table()
+def main():
+    HEADER = """<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>periodic_table</title>
+    <link rel="stylesheet" href="periodic_table.css">
+  </head>
+  <body>
+  <table>
+  """
+    FOOTER = """  </table>
+  </body>
+</html>
+"""
+    EMPTY = "      <td class='none'></td>\n"
+    periodic_table = mendeleev_tab()
+    f = open("periodic_table.html", "w")
+    f.write(HEADER)
+    actpos = 0
+    for x in periodic_table:
+      val = int(periodic_table[x]["pos"]) # 0
+      while (actpos < val):
+        f.write(EMPTY)
+        actpos += 1
+      if (val == 0):
+        f.write("  <tr>\n")
+      f.write(print_bloc(periodic_table[x]))
+      actpos += 1
+      if (val == 17):
+        actpos = 0
+        f.write("  </tr>\n")
+    f.write(FOOTER)
+    writecssfile()
+
+if __name__ == '__main__':
+    main()

@@ -19,7 +19,6 @@ def find_capital_city(state):
 	for i in range(len(state)):
 		state[i] = state[i].capitalize()
 	state = " ".join(state)
-	print(state)
 	if state in states:
 		return capital_cities[states[state]]
 	return "Unknown"
